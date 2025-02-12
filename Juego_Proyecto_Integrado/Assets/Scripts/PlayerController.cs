@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Windows;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private float horizontalInput;
     private float verticalInput;
+    private bool isFacingRight = true;
 
     //Varibales de estadísticas del player
     public float speed;
@@ -36,6 +38,58 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         verticalInput = UnityEngine.Input.GetAxis("Vertical");
         playerRb.velocity = new Vector2(verticalInput * speed, playerRb.velocity.x);
+
+        //Flip: si el valor del input es diferente a 0
+        if (horizontalInput > 0)
+        {
+            anim.SetBool("Run", true);
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        }
+        if (horizontalInput < 0)
+        {
+            anim.SetBool("Run", true);
+            if (isFacingRight)
+            {
+                Flip();
+            }
+        }
+        if (verticalInput > 0)
+        {
+            anim.SetBool("Run", true);
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        }
+        if (verticalInput < 0)
+        {
+            anim.SetBool("Run", true);
+            if (isFacingRight)
+            {
+                Flip();
+            }
+        }
+        if (horizontalInput == 0)
+        {
+            anim.SetBool("Run", false);
+        }
+        if (verticalInput == 0)
+        {
+            anim.SetBool("Run", false);
+        }
     }
 
+ 
+
+ 
+    void Flip()
+    {
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        transform.localScale = currentScale;
+        isFacingRight = !isFacingRight;
+    }
 }
