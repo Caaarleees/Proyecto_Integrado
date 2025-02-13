@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private bool isFacingRight = true;
+    public int vidas = 4;
+
 
     //Varibales de estadísticas del player
     public float speed;
