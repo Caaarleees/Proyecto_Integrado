@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     //Variables de referencia 
     private Rigidbody2D playerRb;
+    private BoxCollider2D boxCollider2D;
     private Animator anim;
     private float horizontalInput;
     private float verticalInput;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
         
@@ -39,6 +41,14 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(horizontalInput * speed, playerRb.velocity.y);
         verticalInput = UnityEngine.Input.GetAxis("Vertical");
         playerRb.velocity = new Vector2(verticalInput * speed, playerRb.velocity.x);
+        if (horizontalInput != 0f)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
 
         //Flip: si el valor del input es diferente a 0
         if (horizontalInput > 0)
