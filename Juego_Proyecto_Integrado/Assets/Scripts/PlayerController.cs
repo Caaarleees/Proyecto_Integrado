@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         //Flip: si el valor del input es diferente a 0
         if (horizontalInput > 0)
         {
-            anim.SetBool("Run", true);
+            anim.SetBool("IsRunning", true);
             if (!isFacingRight)
             {
                 Flip();
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         }
         if (horizontalInput < 0)
         {
-            anim.SetBool("Run", true);
+            anim.SetBool("IsRunning", true);
             if (isFacingRight)
             {
                 Flip();
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         if (verticalInput > 0)
         {
-            anim.SetBool("Run", true);
+            anim.SetBool("IsRunning", true);
             if (!isFacingRight)
             {
                 Flip();
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
         if (verticalInput < 0)
         {
-            anim.SetBool("Run", true);
+            anim.SetBool("IsRunning", true);
             if (isFacingRight)
             {
                 Flip();
@@ -85,11 +85,11 @@ public class PlayerController : MonoBehaviour
         }
         if (horizontalInput == 0)
         {
-            anim.SetBool("Run", false);
+            anim.SetBool("IsRunning", false);
         }
         if (verticalInput == 0)
         {
-            anim.SetBool("Run", false);
+            anim.SetBool("IsRunning", false);
         }
     }
 
