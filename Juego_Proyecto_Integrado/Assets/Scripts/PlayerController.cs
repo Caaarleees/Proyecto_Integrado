@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     //Varibales de estadísticas del player
     public float speed;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
