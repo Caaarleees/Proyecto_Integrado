@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 558155251}
   - component: {fileID: 558155250}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Vida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
