@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("Enemy Move Parameters")]
-    [SerializeField] float speed;
-    [SerializeField] float limitX = -10;
-
-    [Header("General References")]
-    [SerializeField] GameObject enemyBody;
-    [SerializeField] BoxCollider2D enemyCol;
-    [SerializeField] Animator enemyAnim;
-
-    private void Awake()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        enemyCol = GetComponent<BoxCollider2D>();
-        enemyAnim = enemyBody.GetComponent<Animator>();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Vector2 direccionDanio = new Vector2(transform.position.x, 0);
+
+            collision.gameObject.GetComponent<PlayerInput>().RecibeDanio(direccionDanio, 1);
+        }
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+ }
