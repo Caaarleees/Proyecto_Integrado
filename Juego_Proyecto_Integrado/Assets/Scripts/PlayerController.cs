@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
@@ -28,7 +29,34 @@ public class PlayerController : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
-        
+        void OnCollisionEnter2D(Collision2D c)
+        {
+            if (c.transform.tag.Equals("Enemigo"))
+            {
+                if (--vidas > 0)
+                {
+
+                }
+                
+                else
+                {
+                  SceneManager.LoadScene("juego");
+                }
+                
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     // Update is called once per frame
